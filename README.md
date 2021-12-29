@@ -41,11 +41,12 @@ Here is a quick list of what's kept the same or what's similar between `content`
 - **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
 - **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`.
-- **Formal definition:** the {{CSSinfo}} macro is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this.
+- **Formal definition:** the `{{CSSinfo}}` macro is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this.
 - **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts.
 - **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language.
-  - **browser-compat:** only necessary for pages with compatibility tables — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
+  - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}} macro` takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
 - **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts.
+- **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 
 ## Key localization differences
 
@@ -72,11 +73,37 @@ Coming soon!
 
 Coming soon!
 
+<!--
+- Like in the `content` repo, avoid using external links for images: instead, use relative sources by providing the file name of the image to be displayed. Ensure that the source you provide matches that of the image file in the en-US repo.
+- If you're using the same image as the en-US counterpart of a page, using the same relative source for the image will suffice.
+  - Exception: for embed macros like `{{EmbedLiveSample}}` to function properly, a copy of all images used in those live samples must be present in the same folder as the translated repo's `index.html` or `index.md` file.
+- The `alt` attribute can and should be translated to the corresponding language.
+-->
+
 ### Links
 
-Coming soon!
+The guidelines for relative and external links are very similar — concerns surrounding links in MDN's translated documentation primarily stem from the quality or existence of a page/resource in a certain language.
 
-### Macros
+#### Relative links
+
+For links within MDN Web Docs itself, simply provide the **slug in English** with `/<your-locale>/docs/` as a "prefix" *(if the full HTTP header is provided for a relative link, or if a non-canonical/non-English slug is used, Yari's flaw checker will detect this)*. If the linked page has been translated for your locale, link to the corresponding translated version. If not, you can link to the en-US page or do the same as before — in the latter case, Yari will detect a "broken link" and have it fallback on the en-US version, adding a "(en-US)" note after the link. For example:
+
+- To link to the French *"Démarrer avec CSS"* page *("Getting started with CSS" in en-US)*, the following slug should be provided as the link source: `/fr/docs/Learn/CSS/First_steps/Getting_started`
+
+If you're linking to a section header, chances are you won't be able to keep the English header ID/name — simply provide the ID or name that matches whichever section you're linking to. *This may vary with certain locales, particularly with zh-TW, which keeps their header IDs in English.*
+
+- For example, to link to the *"Ajouter une classe" ("Adding a class" in en-US)* section/header of the French *"Démarrer avec CSS"* page, one would use the following slug: `/fr/docs/Learn/CSS/First_steps/Getting_started#ajouter_une_classe`
+
+#### External links
+
+Links should match those in the en-US counterpart, even if it leads to a page that is only available in English. Ensure that `https:` is used in external links *(the flaw-checker will warn of `http:` usage otherwise)*.
+
+On a similar note, if the linked resource has a translation available for the language of your locale, you may include a link to the resource in that language provided that:
+
+- It is of good quality, and its content matches/is up-to-date with the original (usually English) version;
+- It is "well-maintained" and often updated (if applicable).
+
+### Using macros
 
 Coming soon!
 
