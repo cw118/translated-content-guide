@@ -13,7 +13,7 @@ Links to important GitHub repos and shortcuts to key documents/webpages:
 - GitHub repo containing all translated MDN content: [mdn/translated-content](https://github.com/mdn/translated-content)
   - README, Contributing to translated-content: [README.md in mdn/translated-content](https://github.com/mdn/translated-content/blob/main/README.md)
   - [translated-content issues](https://github.com/mdn/translated-content/issues)
-- Localizing MDN: [Active locales](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Localize)
+- Localizing MDN (+ contact the locale teams): [Active locales](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Localize)
 - GitHub repo containing the content behind MDN Web Docs (en-US original version): [mdn/content](https://github.com/mdn/content)
 - The content repo README, which has information on fundamental concepts, PR etiquette and common actions: [README.md in mdn/content](https://github.com/mdn/content/blob/main/README.md)
 - MDN's how-to guides: [Contributing to MDN, how-tos](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Howto)
@@ -42,11 +42,12 @@ Here is a quick list of what's kept the same or what's similar between `content`
 - **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
 - **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`. *Note: it seems that this declaration is no longer necessary/used, but this has yet to be confirmed.*
-- **Formal definition:** the `{{CSSinfo}}` macro is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this.
-- **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts.
-- **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language.
+- **Formal definition:** the `{{CSSinfo}}` macro *(also seen as `{{cssinfo}}`, though case doesn't necessarily matter)* is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
+- **Formal syntax:** the `{{csssyntax}` macro is used universally; however, the placement of the `Formal syntax` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
+- **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts. For HTML files, specifications macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
+- **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language. For HTML files, compatibility table macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
   - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
-- **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts.
+- **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts. For HTML files, sidebar macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 
 ## Key localization differences
@@ -54,21 +55,59 @@ Here is a quick list of what's kept the same or what's similar between `content`
 Below is a non-extensive list of important differences between `translated-content` and `content` document structures, based on tips from review teams and my observations. Certain "concepts", such as macros, require more in-depth explanations and are given a subsection to address their particularities.
 
 - **Tags:** the translated docs do **not** use tags (teams and contributors are still in the process of removing them) — found at the top of en-US files and possibly translated files where they haven't yet been deleted.
-- **No-breaking spaces (mostly French-specific):** when using punctuation that requires spaces before and/or after alphabetic characters like guillemets (`«»`), colons (`:`), semi-colons (`;`), question and exclamation marks (`?` and `!`), use no-breaking spaces (HTML entity `&nbsp`).
+- **No-breaking spaces (mostly French-specific):** when using punctuation that requires spaces before and/or after alphabetic characters like guillemets (`«»`), colons (`:`), semi-colons (`;`), question and exclamation marks (`?` and `!`), use no-breaking spaces (HTML entity `&nbsp;`).
   - A seemingly good rule of thumb for this is that when you're in doubt of whether a non-breaking space is "required", use one.
   - For example, note the presence of a non-breaking space in the following sentence: `Travailler avec des formulaires peut s'avérer compliqué&nbsp;!` (*renders as:* Travailler avec des formulaires peut s'avérer compliqué&nbsp;!).
   - An example with guillemets: `des «&nbsp;gouttières&nbsp;»` (*renders as:* des «&nbsp;gouttières&nbsp;»).
+- **Code blocks:** for the most part, code such as class/ID names and the inner HTML of tags can be translated. Comments can be translated as well; however, declarations of variables and functions are usually kept in English.
 - **Translation differences:** keep in mind that it's often not possible to find direct translations — in those cases, translate in a way that "makes sense" in the language concerned, while preserving the key meaning/conveying the main message.
 - **Cards in l10n:** see the [Cards](#cards) section for details on using cards (in English, these are `Note:`, `Callout:` and `Warning:`).
 - **Images:** see the [Images](#images) section.
 - **Links:** see the [Links](#links) section.
-- **Macros:** see the [Using macros](#using_macros) section for details on vocabulary macros (`htmlelement`, `cssxref`, etc.) and embed macros (`EmbedLiveSample`, `EmbedInteractiveSample`, etc.).
+- **Macros:** see the [Using macros](#using_macros) section for details on vocabulary/xref macros (`htmlelement`, `cssxref`, etc.) and embed macros (`EmbedLiveSample`, `EmbedInteractiveSample`, etc.).
 
 ### Cards
 
-Coming soon!
+In English, the three main types of cards can be added using the keywords **Note:**, **Callout:**, and **Warning:**. The translated content also uses these cards *(they should be placed in the same file/page locations with the matching card style)*, but with translated keywords — to see the card keywords used by each locale, see their corresponding localization JSON file at [mdn/yari/markdown/localizations](https://github.com/mdn/yari/tree/main/markdown/localizations). ***All contents of such cards can and should be translated!***
 
-<!-- To see the card keywords used by each locale, see their corresponding localization JSON file at [mdn/yari/markdown/localizations](https://github.com/mdn/yari/tree/main/markdown/localizations). -->
+For example, a **Note:** card is styled as follows:
+
+![MDN blue note card](./images/note-card.png)
+
+In the French locale, the keyword is the same. Depending on whether the file you're working on has an `.html` or `.md` extension, you'd type:
+
+- `.html` (the file is still in HTML): Create a `<div>` and apply the `note` class to it, then wrap `<strong>` tags around the keyword. The colon after the keyword tends to be placed outside of the `<strong>` tags. See below for an example.
+
+```html
+<div class="note">
+  <p><strong>Примечание</strong>: Here's a note card in HTML.</p>
+  <p>
+    <pre class="brush: html">&lt;p&gt;You can also add blocks of code in these cards!&lt;/p&gt;</pre>
+  </p>
+</div>
+```
+
+- `.md` (the file has been converted to Markdown): Type `> **Note :**` to use the card (notice the Markdown bold and blockquote formatting, as well as the space preceding the colon as per French grammar rules). The "syntax" for a French note card would essentially match that of a blockquote in Markdown:
+
+> **Note :** Paragraphe de référence (placeholder text), paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence.
+> 
+> ```html
+> <p>You can also add blocks of code in these cards!</p>
+> ```
+
+Similarly, a callout card (**Callout:**) looks like the following:
+
+![MDN blue callout card](./images/callout-card.png)
+
+Aside from the change in keyword *(Note > Callout)*, the "syntax" for this type of card is the same as a that of a **Note:**. Directly below is an example for a Markdown file in the French locale *(Note > Remarque)*:
+
+> **Remarque :** Paragraphe de référence (placeholder text), paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence.
+> 
+> ```html
+> <p>You can also add blocks of code in these cards!</p>
+> ```
+
+The warning card follows the same rules as **Note:** and **Callout:**. *Also see [MDN's guidelines and writing style guide](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Writing_style_guide#text_formatting_and_styles) for more on styles and formatting.*
 
 ### Images
 
