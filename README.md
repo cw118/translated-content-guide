@@ -56,6 +56,7 @@ Here is a quick list of what's kept the same or what's similar between `content`
 Below is a non-extensive list of important differences between `translated-content` and `content` document structures, based on tips from review teams and my observations. Certain "concepts", such as macros, require more in-depth explanations and are given a subsection to address their particularities.
 
 - **Tags:** the translated docs do **not** use tags (teams and contributors are still in the process of removing them) — found at the top of en-US files and possibly translated files where they haven't yet been deleted.
+  - Removing tags doesn't seem to be a priority, so no need to make a PR removing tags from all files — if you're editing a page in the translated-content repo that happens to have tags, please do remove them.
 - **No-breaking spaces (mostly French-specific):** when using punctuation that requires spaces before and/or after alphabetic characters like guillemets (`«»`), colons (`:`), semi-colons (`;`), question and exclamation marks (`?` and `!`), use no-breaking spaces (HTML entity `&nbsp;`).
   - A seemingly good rule of thumb for this is that when you're in doubt of whether a non-breaking space is "required", use one.
   - For example, note the presence of a non-breaking space in the following sentence: `Travailler avec des formulaires peut s'avérer compliqué&nbsp;!` (*renders as:* Travailler avec des formulaires peut s'avérer compliqué&nbsp;!).
@@ -108,18 +109,20 @@ Aside from the change in keyword *(Note > Callout)*, the "syntax" for this type 
 > <p>You can also add blocks of code in these cards!</p>
 > ```
 
-The warning card follows the same rules as **Note:** and **Callout:**. *Also see [MDN's guidelines and writing style guide](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Writing_style_guide#text_formatting_and_styles) for more on styles and formatting.*
+The warning card (**Warning:**) follows the same rules as **Note:** and **Callout:**. *Also see [MDN's guidelines and writing style guide](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Writing_style_guide#text_formatting_and_styles) for more on styles and formatting.*
 
 ### Images
 
-Coming soon!
+Like in the `content` repo, avoid using external links for images: instead, use relative sources by providing the file name of the image to be displayed. Ensure that the source you provide matches that of the image file in the en-US repo. **The `alt` attribute can and should be translated to the locale language.**
 
-<!--
-- Like in the `content` repo, avoid using external links for images: instead, use relative sources by providing the file name of the image to be displayed. Ensure that the source you provide matches that of the image file in the en-US repo.
-- If you're using the same image as the en-US counterpart of a page, using the same relative source for the image will suffice.
-  - Exception: for embed macros like `{{EmbedLiveSample}}` to function properly, a copy of all images used in those live samples must be present in the same folder as the translated repo's `index.html` or `index.md` file.
-- The `alt` attribute can and should be translated to the corresponding language.
--->
+If you're using the **same image as the en-US counterpart** of a page, using the same relative source for the image (which is really just the image's file name) will suffice. ***Please also note the exception specified below.***
+
+- For example, to link to the "flexbox-example1.png" image, you can simply write `![alt text here](flexbox-example1.png)` for Markdown, or for HTML, give the `<img>` tag a `src` attribute of "flexbox-example1.png" like this: `<img src="flexbox-example1.png" alt="alt text here">`.
+  - If you see external links/sources such as `https://mdn.mozillademos.org/files/13406/flexbox-example1.png`, or even relative file paths like `/files/3739/flex_terms.png`, be sure to test out the relative source on your local copy to ensure you've found the correct image source! Often, the simplest way to do so is to use the same image source as the en-US file. *See [PR #3331](https://github.com/mdn/translated-content/pull/3331) for an example of fixing image sources.*
+- ***Exception:*** for embed macros like `{{EmbedLiveSample}}` to function properly, a copy of all images used in those live samples must be present in the same folder as the translated repo's `index.html` or `index.md` file.
+  - For example, the [French page on CSS `<blend-mode>`](https://developer.mozilla.org/fr/docs/Web/CSS/blend-mode) has multiple `{{EmbedLiveSample}}`s that rely on two image files, `br.png` and `tr.png`. Without these two image files in the `blend-mode` folder, the samples won't display properly — this was fixed in [PR #3383](https://github.com/mdn/translated-content/pull/3383).
+
+On a similar note, **if a locale is using an image that's different from the one included in en-US files, the image file will need to be uploaded to the same folder as the `index.md` or `index.html` file**.
 
 ### Links
 
