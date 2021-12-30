@@ -49,6 +49,7 @@ Here is a quick list of what's kept the same or what's similar between `content`
   - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
 - **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts. For HTML files, sidebar macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
+- **Formatting and layout:** the translated docs should, in general, be formatted and laid out in the same way as the en-US versions — however, if you find mistakes (e.g. incorrect Markdown syntax), please correct them in the translated file(s), and feel free to submit a PR at the mdn/content repo to fix those errors at the source as well!
 
 ## Key localization differences
 
