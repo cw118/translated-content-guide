@@ -21,13 +21,14 @@ Links to important GitHub repos and shortcuts to key documents/webpages:
 
 ## Types of contributions
 
-Maintaining translated versions of MDN Web Docs can be quite difficult. Here are some types of contributions to consider if you're not sure where to start or what to do:
+Maintaining translated versions of MDN Web Docs can be quite difficult — the English docs are almost constantly changing and evolving, which can make it difficult to keep the translated versions up-to-date. Here are some types of contributions to consider if you're not sure where to start or what to do:
 
 - Typo and formatting fixes
 - Fixing links (dead, unneeded external, https, etc.)
 - Fixing issues with images (not displaying, wrong source, etc.)
 - Fixing issues with macros *(more detail on this in [Using macros](#using_macros))*
   - Fixing issues with live code examples
+- Translating sections mistakenly left in English (fixing/correcting missed translations)
 - Updating/synchronizing translated docs with the en-US versions
 - General "clean-up" *(typically includes most/all of the above)*
 - Fixing actionable issues through pull requests
@@ -40,11 +41,11 @@ Here is a quick list of what's kept the same or what's similar between `content`
 
 - **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
-- **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`.
+- **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`. *Note: it seems that this declaration is no longer necessary/used, but this has yet to be confirmed.*
 - **Formal definition:** the `{{CSSinfo}}` macro is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this.
 - **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts.
 - **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language.
-  - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}} macro` takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
+  - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
 - **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts.
 - **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 
@@ -93,6 +94,7 @@ For links within MDN Web Docs itself, simply provide the **slug in English** wit
 If you're linking to a section header, chances are you won't be able to keep the English header ID/name — simply provide the ID or name that matches whichever section you're linking to. *This may vary with certain locales, particularly with zh-TW, which keeps their header IDs in English.*
 
 - For example, to link to the *"Ajouter une classe" ("Adding a class" in en-US)* section/header of the French *"Démarrer avec CSS"* page, one would use the following slug: `/fr/docs/Learn/CSS/First_steps/Getting_started#ajouter_une_classe`
+  - **Note:** to link to a section/header on the same page, just use the section ID. To be more precise — using the same example as above, if you're editing the *"Démarrer avec CSS"* page and want to link to the *"Ajouter une classe"* section at some point, just use this as the link source: `#ajouter_une_classe`
 
 #### External links
 
