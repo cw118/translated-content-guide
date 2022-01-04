@@ -152,6 +152,8 @@ On a similar note, if the linked resource has a translation available for the la
 
 Coming soon!
 
+See the [macros folder at mdn/yari](https://github.com/mdn/yari/tree/main/kumascript/macros) for a full list of macros used in MDN Web Docs.
+
 #### Vocabulary macros
 
 Coming soon!
