@@ -117,10 +117,10 @@ Like in the `content` repo, avoid using external links for images: instead, use 
 
 If you're using the **same image as the en-US counterpart** of a page, using the same relative source for the image (which is really just the image's file name) will suffice. ***Please also note the exception specified below.***
 
-- For example, to link to the "flexbox-example1.png" image, you can simply write `![alt text here](flexbox-example1.png)` for Markdown, or for HTML, give the `<img>` tag a `src` attribute of "flexbox-example1.png" like this: `<img src="flexbox-example1.png" alt="alt text here">`.
+- For example, to link to the "flexbox-example1.png" image, you can simply write `![alt text here](flexbox-example1.png)` for Markdown, or for HTML, give the `<img>` tag a `src` attribute of "flexbox-example1.png" (and ideally, an `alt` attribute as well) like this: `<img src="flexbox-example1.png" alt="alt text here">`.
   - If you see external links/sources such as `https://mdn.mozillademos.org/files/13406/flexbox-example1.png`, or even relative file paths like `/files/3739/flex_terms.png`, be sure to test out the relative source on your local copy to ensure you've found the correct image source! Often, the simplest way to do so is to use the same image source as the en-US file. *See [PR #3331](https://github.com/mdn/translated-content/pull/3331) for an example of fixing image sources.*
-- ***Exception:*** for embed macros like `{{EmbedLiveSample}}` to function properly, a copy of all images used in those live samples must be present in the same folder as the translated repo's `index.html` or `index.md` file.
-  - For example, the [French page on CSS `<blend-mode>`](https://developer.mozilla.org/fr/docs/Web/CSS/blend-mode) has multiple `{{EmbedLiveSample}}`s that rely on two image files, `br.png` and `tr.png`. Without these two image files in the `blend-mode` folder, the samples won't display properly — this was fixed in [PR #3383](https://github.com/mdn/translated-content/pull/3383).
+- ***Exception:*** for embed macros like `{{EmbedLiveSample}}` to function properly, a copy of all images used in those live samples must be present in the same folder as the translated repo's `index.html` or `index.md` file. ***(Note: [a PR waiting on triage and merging at mdn/yari](https://github.com/mdn/yari/pull/5215) could remove this exception, but at the moment, no "solution" for this has been implemented.)***
+  - *For example, the [French page on CSS `<blend-mode>`](https://developer.mozilla.org/fr/docs/Web/CSS/blend-mode) has multiple `{{EmbedLiveSample}}`s that rely on two image files, `br.png` and `tr.png`. Without these two image files in the `blend-mode` folder, the samples won't display properly — this was fixed in [PR #3383](https://github.com/mdn/translated-content/pull/3383).*
 
 On a similar note, **if a locale is using an image that's different from the one included in en-US files, the image file will need to be uploaded to the same folder as the `index.md` or `index.html` file**.
 
@@ -150,16 +150,26 @@ On a similar note, if the linked resource has a translation available for the la
 
 ### Using macros
 
-Coming soon!
+Macros were "migrated" to Yari from MDN's previous Kuma system, and some have been or are on track to being deprecated (deleted). Certain macros are here to stay, namely `{{EmbedLiveSample}}` and other various live sample macros, but vocabulary macros are possibly expected to be removed in the future. One macro that is in the process of being "purged" from translated-content pages, since it was deleted, is the `{{page}}` transclusion macro (see [mdn/translated-content issues](https://github.com/mdn/translated-content/issues)).
 
 See the [macros folder at mdn/yari](https://github.com/mdn/yari/tree/main/kumascript/macros) for a full list of macros used in MDN Web Docs.
 
 #### Vocabulary macros
 
-Coming soon!
+Depending on the locale, the reviewing team may continue using macros as the en-US files do, or they may prefer to replace these macros with their corresponding links. For instance, the French (fr) locale replaces all vocabulary macros and some others with links to prepare for their potential deletion. Some examples of these, as in vocabulary and wiki macros, are:
+
+- `{{HTMLElement}}`
+- `{{CSSxRef}}`
+- `{{JSxRef}}`
+- `{{Interwiki}}`
+- `{{Glossary}}`
+- `{{HTTPStatus}}`
+- `{{DOMxRef}}`
 
 #### Live and interactive code samples
 
-Coming soon!
+The most commonly used live sample macro is `{{EmbedLiveSample}}`, though there are also some others such as `{{EmbedGHLiveSample}}` and `{{EmbedInteractiveExample}}`. The first of these must always take at least one argument — the first or only argument in the English files is the section anchor/heading, but this sometimes causes rendering errors for translated-content, so on the translated-content side, we tend to leave an empty string as the argument instead (e.g. `{{EmbedLiveSample("")}}` or `{{EmbedLiveSample('')}}`). The remaining arguments, typically width and height, should usually be kept the same as en-US.
 
-<!-- This section covers best practices for including these embed macros, and not how they work. If you'd like more details on the latter, see [Live samples — The MDN project](https://developer.mozilla.org/en-US/docs/MDN/Structures/Live_samples). -->
+The other two live sample macros (`GHLiveSample` and `InteractiveExample`) should be exact "copies" of what's written/used in the en-US counterparts.
+
+*This section covers best practices for including these embed macros, and not how they work. If you'd like more details on the latter, see [Live samples — The MDN project](https://developer.mozilla.org/en-US/docs/MDN/Structures/Live_samples).*
