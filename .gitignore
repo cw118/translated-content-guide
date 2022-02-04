@@ -1,0 +1,3 @@
+# Avoids committing/pushing .json config files, including linter configurations
+
+*.json
