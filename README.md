@@ -6,6 +6,23 @@ When it comes to differences in content between the English page and its transla
 
 *Note: This guide was **not** created by any member of MDN. It contains observations and tips gathered by myself from various PRs and read-throughs of mdn/translated-content's French documentation. If reviewers suggest, request or push changes, it's a good idea to keep those in mind for future contributions to avoid repeating the same mistakes.*
 
+## Table of contents
+
+- [Links: Good places to start](#links-good-places-to-start)
+- [Types of contributions](#types-of-contributions)
+- [Similarities: en-US and locales](#similarities-en-us-and-locales)
+- [Key localization differences](#key-localization-differences)
+  - [Cards](#cards)
+  - [Images](#images)
+  - [Links](#links)
+    - [Relative links](#relative-links)
+    - [External links](#external-links)
+  - [Using macros](#using-macros)
+    - [Vocabulary macros](#vocabulary-macros)
+    - [Live and interactive code samples](#live-and-interactive-code-samples)
+    - [The EmbedLiveSample macro](#the-embed-live-sample-macro)
+- [HTML-Markdown conversion](#html-markdown-conversion) (coming soon!)
+
 ## Links: Good places to start
 
 Links to important GitHub repos and shortcuts to key documents/webpages:
@@ -35,7 +52,7 @@ Maintaining translated versions of MDN Web Docs can be quite difficult — the E
 - Creating issues to notify teams and contributors of problems found on translated pages ***(please be as clear and as detailed as possible in your issue titles and descriptions)***
 - Translating a document from English into another language ***(refer to the list of [active locales](https://github.com/mdn/translated-content#locales))***
 
-## Similarities: en-US and translations
+## Similarities: en-US and locales
 
 Here is a quick list of what's kept the same or what's similar between `content` and `translated-content`, including small additions for files in the latter repo:
 
@@ -71,6 +88,9 @@ Below is a non-extensive list of important differences between `translated-conte
 - **Links:** see the [Links](#links) section.
 - **Macros:** see the [Using macros](#using_macros) section for details on vocabulary/xref macros (`htmlelement`, `cssxref`, etc.) and embed macros (`EmbedLiveSample`, `EmbedInteractiveSample`, etc.).
 
+---
+---
+
 ### Cards
 
 In English, the three main types of cards can be added using the keywords **Note:**, **Callout:**, and **Warning:**. The translated content also uses these cards *(they should be placed in the same file/page locations with the matching card style)*, but with translated keywords — to see the card keywords used by each locale, see their corresponding localization JSON file at [mdn/yari/markdown/localizations](https://github.com/mdn/yari/tree/main/markdown/localizations). ***All contents of such cards can and should be translated!***
@@ -81,7 +101,7 @@ For example, a **Note:** card is styled as follows:
 
 In the French locale, the keyword is the same. Depending on whether the file you're working on has an `.html` or `.md` extension, you'd type:
 
-- `.html` (the file is still in HTML): Create a `<div>` and apply the `note` class to it, then wrap `<strong>` tags around the keyword. The colon after the keyword tends to be placed outside of the `<strong>` tags. See below for an example.
+- `.html` (the file is still in **HTML**): Create a `<div>` and apply the `note` class to it, then wrap `<strong>` tags around the keyword. The colon after the keyword tends to be placed outside of the `<strong>` tags. See below for an example.
 
 ```html
 <div class="note">
@@ -92,7 +112,7 @@ In the French locale, the keyword is the same. Depending on whether the file you
 </div>
 ```
 
-- `.md` (the file has been converted to Markdown): Type `> **Note :**` to use the card (notice the Markdown bold and blockquote formatting, as well as the space preceding the colon as per French grammar rules). The "syntax" for a French note card would essentially match that of a blockquote in Markdown:
+- `.md` (the file has been converted to **Markdown**): Type `> **Note :**` to use the card *(notice the Markdown bold and blockquote formatting, as well as the space preceding the colon as per French grammar rules — do **not** use a non-breaking space `&nbsp;` in card keywords!)*. The "syntax" for a French note card would essentially match that of a blockquote in Markdown:
 
 > **Note :** Paragraphe de référence (placeholder text), paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence.
 >
@@ -114,6 +134,9 @@ Aside from the change in keyword *(Note > Callout)*, the "syntax" for this type 
 
 The warning card (**Warning:**) follows the same rules as **Note:** and **Callout:**. *Also see [MDN's guidelines and writing style guide](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Writing_style_guide#text_formatting_and_styles) for more on styles and formatting.*
 
+---
+---
+
 ### Images
 
 Like in the `content` repo, avoid using external links for images: instead, use relative sources by providing the file name of the image to be displayed. Ensure that the source you provide matches that of the image file in the en-US repo. **The `alt` attribute can and should be translated to the locale language.**
@@ -127,9 +150,14 @@ If you're using the **same image as the en-US counterpart** of a page, using the
 
 However, note that **if a locale is using an image that's different from the one included in en-US files, the image file will need to be uploaded to the same folder as the `index.md` or `index.html` file**.
 
+---
+---
+
 ### Links
 
 The guidelines for relative and external links are very similar — concerns surrounding links in MDN's translated documentation primarily stem from the quality or existence of a page/resource in a certain language.
+
+---
 
 #### Relative links
 
@@ -140,7 +168,9 @@ For links within MDN Web Docs itself, simply provide the **slug in English** wit
 If you're linking to a section header, chances are you won't be able to keep the English header ID/name — simply provide the ID or name that matches whichever section you're linking to. *This may vary with certain locales, particularly with zh-TW, which keeps their header IDs in English.*
 
 - For example, to link to the *"Ajouter une classe" ("Adding a class" in en-US)* section/header of the French *"Démarrer avec CSS"* page, one would use the following slug: `/fr/docs/Learn/CSS/First_steps/Getting_started#ajouter_une_classe`
-  - **Note:** to link to a section/header on the same page, just use the section ID. To be more precise — using the same example as above, if you're editing the *"Démarrer avec CSS"* page and want to link to the *"Ajouter une classe"* section at some point, just use this as the link source: `#ajouter_une_classe`
+  - **Note:** to link to a section/header on the same page, just use the section ID. To be more precise — using the same example as above, if you're editing the *"Démarrer avec CSS"* page and want to link to the *"Ajouter une classe"* section at some point, just use this as the link source: `#ajouter_une_classe`.
+
+---
 
 #### External links
 
@@ -151,6 +181,9 @@ On a similar note, if the linked resource has a translation available for the la
 - It is of good quality, and its content matches/is up-to-date with the original (usually English) version;
 - It is "well-maintained" and often updated (if applicable).
 
+---
+---
+
 ### Using macros
 
 Macros were "migrated" to Yari from MDN's previous Kuma system, and some have been or are on track to being deprecated (deleted). Certain macros are here to stay, namely `{{EmbedLiveSample}}` and other various live sample macros, but vocabulary macros are possibly expected to be removed in the future. One macro that is in the process of being "purged" from translated-content pages, since it was deleted, is the `{{page}}` transclusion macro (see [mdn/translated-content issues](https://github.com/mdn/translated-content/issues)).
@@ -158,6 +191,8 @@ Macros were "migrated" to Yari from MDN's previous Kuma system, and some have be
 Also note that it's best to avoid adding spaces between the double curly braces (`{{` and `}}`), parentheses (`(` and `)`), and the actual macro with its arguments (e.g. `{{Glossary( "Truthy")}}`, `{{ EmbedLiveSample("", '100%') }}`, etc.). Some older files may have macros "formatted" this way — this is something that can and should be corrected on the translated-content side (continuing with the previous examples, they should become `{{Glossary("Truthy")}}` and `{{EmbedLiveSample("", '100%')}}`).
 
 See the [macros folder at mdn/yari](https://github.com/mdn/yari/tree/main/kumascript/macros) for a full list of macros used in MDN Web Docs.
+
+---
 
 #### Vocabulary macros
 
@@ -171,6 +206,8 @@ Depending on the locale, the reviewing team may continue using macros as the en-
 - `{{htmlattrxref}}`
 - `{{HTTPStatus}}`
 - `{{DOMxRef}}`
+
+---
 
 #### Live and interactive code samples
 
@@ -193,7 +230,7 @@ However, there are some exceptions/special cases to watch out for when using thi
 
 **Example/case 1:** *One (type of) code block under one heading*
 
-With only one code block (meaning code in only one language), the EmbedLiveSample macro will work perfectly with an empty string as the first argument (otherwise it can be problematic when rendering). Taking the Spanish locale as an example, both of the code snippets below have only one HTML code block — one with a large heading (`h2`), and the second with both a heading and subheading (`h2` follwed by an `h3`) — will output the same live sample result.
+With only one code block (meaning code in only one language), the EmbedLiveSample macro will work perfectly with an empty string as the first argument (otherwise it can be problematic when rendering). Taking the Spanish locale as an example, both of the code snippets below have only one HTML code block — one with a large heading (`h2`), and the second with both a heading and subheading (`h2` followed by an `h3`) — will output the same live sample result.
 
 <details>
 <summary>Collapse/show the case 1 example:</summary>
@@ -211,7 +248,7 @@ Both will produce this (which is correct/what's expected):
 
 **Example/case 2:** *Multiple (types of) code blocks under one heading*
 
-Sometimes, pages will have multiple code blocks, since a sample involves multiple programming or markup languages. The most common combinations involve HTML, CSS and JavaScript. However, one must note that these example code blocks can be organized in various ways — sometimes, they're each under their own subheading (see [example 3](#example-case-3-multiple-types-of-code-blocks-under-separate-headings)), while they can **all be placed under one heading/subheading**. This example demonstrates the second of these cases, where the EmbedLiveSample macro will handle an empty string first argument well.
+Sometimes, pages will have multiple code blocks, since a sample involves multiple programming or markup languages. The most common combinations involve HTML, CSS and JavaScript. However, one must note that these example code blocks can be organized in various ways — sometimes, they're each under their own subheading (see example 3), while they can **all be placed under one heading/subheading**. This example demonstrates the second of these cases, where the EmbedLiveSample macro will handle an empty string first argument well.
 
 <details>
 <summary>Here's a test of grouping several code blocks under one heading, with the <code>{{EmbedLiveSample}}</code> immediately following them, done in the `es` (Spanish) locale:</summary>
@@ -225,7 +262,7 @@ Sometimes, pages will have multiple code blocks, since a sample involves multipl
 
 **Example/case 3:** *Multiple (types of) code blocks under separate headings*
 
-Similar to case 2, pages may have **multiple code blocks that are each under their own subheadings**. This tends to be more common in MDN Web Docs, especially in newer and (somewhat/recently) updated pages. In this case, more care needs to be taken, as the EmbedLiveSample macro **cannot** immediately come after the final code block as it did in [example 2](#example-case-2-multiple-types-of-code-blocks-under-one-heading) — **instead, the `{{EmbedLiveSample}}` *must* be placed under its own (sub)heading!** The subheading often used when multiple code blocks are organized this way (as in they're each under their own heading/subheading) is "Result" *(also "Résultat" in French, "Resultado" in Spanish, "Резултат" in Russian and so on)*.
+Similar to case 2, pages may have **multiple code blocks that are each under their own subheadings**. This tends to be more common in MDN Web Docs, especially in newer and (somewhat/recently) updated pages. In this case, more care needs to be taken, as the EmbedLiveSample macro **cannot** immediately come after the final code block as it did in example 2 — **instead, the `{{EmbedLiveSample}}` *must* be placed under its own (sub)heading!** The subheading often used when multiple code blocks are organized this way (as in they're each under their own heading/subheading) is "Result" *(also "Résultat" in French, "Resultado" in Spanish, "Резултат" in Russian and so on)*.
 
 <details>
 <summary>First off, here's is a <strong>bad</strong> example (do <strong>not</strong> try to include an <code>{{EmbedLiveSample}}</code> like this!):</summary>
@@ -246,3 +283,8 @@ With the `{{EmbedLiveSample}}` under its own "Resultado" (Spanish for "Result") 
 
 <img width="700" alt="Result of good EmbedLiveSample usage with multiple headings" src="assets/embedlivesample/multiplecodeblocks/mcb-headings-good-live.png">
 </details>
+
+---
+---
+
+## HTML-Markdown conversion
