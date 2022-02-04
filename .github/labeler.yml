@@ -1,0 +1,13 @@
+# For more information on GitHub Actions' labeler, see https://github.com/actions/labeler
+
+assets:
+- assets/**/*
+
+en-US:
+- README.md
+
+i18n:
+- translations/**/*
+
+workflow:
+- .github/**/*

@@ -93,7 +93,7 @@ In the French locale, the keyword is the same. Depending on whether the file you
 - `.md` (the file has been converted to Markdown): Type `> **Note :**` to use the card (notice the Markdown bold and blockquote formatting, as well as the space preceding the colon as per French grammar rules). The "syntax" for a French note card would essentially match that of a blockquote in Markdown:
 
 > **Note :** Paragraphe de référence (placeholder text), paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence.
-> 
+>
 > ```html
 > <p>You can also add blocks of code in these cards!</p>
 > ```
@@ -105,7 +105,7 @@ Similarly, a callout card (**Callout:**) looks like the following:
 Aside from the change in keyword *(Note > Callout)*, the "syntax" for this type of card is the same as a that of a **Note:**. Directly below is an example for a Markdown file in the French locale *(Note > Remarque)*:
 
 > **Remarque :** Paragraphe de référence (placeholder text), paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence, paragraphe de référence.
-> 
+>
 > ```html
 > <p>You can also add blocks of code in these cards!</p>
 > ```
