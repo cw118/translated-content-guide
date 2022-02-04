@@ -39,6 +39,8 @@ Maintaining translated versions of MDN Web Docs can be quite difficult — the E
 
 Here is a quick list of what's kept the same or what's similar between `content` and `translated-content`, including small additions for files in the latter repo:
 
+- **Newline at end of file:** at the end of every file in MDN Web Docs, whether it's en-US or any locale, should have a newline. This is considered an **MDN standard** (please also read the note directly below).
+  - **Note: it's important to realize that when viewing a file on the regular GitHub UI (without expressly clicking to edit the file or viewing file changes in a PR/commit), this final newline is *not* shown.**
 - **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
 - **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`. *Note: it seems that this declaration is no longer necessary/used, but this has yet to be confirmed.*
@@ -75,7 +77,7 @@ In English, the three main types of cards can be added using the keywords **Note
 
 For example, a **Note:** card is styled as follows:
 
-![MDN blue note card](./images/note-card.png)
+![MDN blue note card](assets/cards/note.png)
 
 In the French locale, the keyword is the same. Depending on whether the file you're working on has an `.html` or `.md` extension, you'd type:
 
@@ -100,7 +102,7 @@ In the French locale, the keyword is the same. Depending on whether the file you
 
 Similarly, a callout card (**Callout:**) looks like the following:
 
-![MDN blue callout card](./images/callout-card.png)
+![MDN blue callout card](assets/cards/callout.png)
 
 Aside from the change in keyword *(Note > Callout)*, the "syntax" for this type of card is the same as a that of a **Note:**. Directly below is an example for a Markdown file in the French locale *(Note > Remarque)*:
 
@@ -153,6 +155,8 @@ On a similar note, if the linked resource has a translation available for the la
 
 Macros were "migrated" to Yari from MDN's previous Kuma system, and some have been or are on track to being deprecated (deleted). Certain macros are here to stay, namely `{{EmbedLiveSample}}` and other various live sample macros, but vocabulary macros are possibly expected to be removed in the future. One macro that is in the process of being "purged" from translated-content pages, since it was deleted, is the `{{page}}` transclusion macro (see [mdn/translated-content issues](https://github.com/mdn/translated-content/issues)).
 
+Also note that it's best to avoid adding spaces between the double curly braces (`{{` and `}}`), parentheses (`(` and `)`), and the actual macro with its arguments (e.g. `{{Glossary( "Truthy")}}`, `{{ EmbedLiveSample("", '100%') }}`, etc.). Some older files may have macros "formatted" this way — this is something that can and should be corrected on the translated-content side (continuing with the previous examples, they should become `{{Glossary("Truthy")}}` and `{{EmbedLiveSample("", '100%')}}`).
+
 See the [macros folder at mdn/yari](https://github.com/mdn/yari/tree/main/kumascript/macros) for a full list of macros used in MDN Web Docs.
 
 #### Vocabulary macros
@@ -170,8 +174,75 @@ Depending on the locale, the reviewing team may continue using macros as the en-
 
 #### Live and interactive code samples
 
-The most commonly used live sample macro is `{{EmbedLiveSample}}`, though there are also some others such as `{{EmbedGHLiveSample}}` and `{{EmbedInteractiveExample}}`. The first of these must always take at least one argument — the first or only argument in the English files is the section anchor/heading, but this sometimes causes rendering errors for translated-content, so on the translated-content side, we tend to leave an empty string as the argument instead (e.g. `{{EmbedLiveSample("")}}` or `{{EmbedLiveSample('')}}`). The remaining arguments, typically width and height, should usually be kept the same as en-US.
+The most commonly used live sample macro is `{{EmbedLiveSample}}` *(also see this macro's own [subsection below](#the-embedlivesample-macro))*, though there are also some others such as `{{EmbedGHLiveSample}}` and `{{EmbedInteractiveExample}}`.
 
-The other two live sample macros (`GHLiveSample` and `InteractiveExample`) should be exact "copies" of what's written/used in the en-US counterparts.
+The `{{EmbedLiveSample}}` macro has lots of particularities (peculiarities) pertaining to it, which is why it has [its own subsection](#the-embedlivesample-macro). The `GHLiveSample` and `InteractiveExample` macros should be exact "copies" of what's written/used in the en-US counterparts.
 
 *This section covers best practices for including these embed macros, and not how they work. If you'd like more details on the latter, see [Live samples — The MDN project](https://developer.mozilla.org/en-US/docs/MDN/Structures/Live_samples).*
+
+---
+---
+
+#### The EmbedLiveSample macro
+
+`{{EmbedLiveSample}}` must always take at least one argument — the first or only argument in the English files is the section anchor/heading, but **this sometimes causes rendering errors for translated-content, so on the translated-content side, we tend to leave an empty string as the argument instead** (e.g. `{{EmbedLiveSample("")}}` or `{{EmbedLiveSample('')}}`). The remaining arguments, typically width and height, should be kept the same as en-US.
+
+However, there are some exceptions/special cases to watch out for when using this macro. The "empty string first argument" strategy only works if the `{{EmbedLiveSample}}` macro is placed under its own heading (usually a "Result" heading), or if all code blocks are placed under a single heading (usually "Example" or a subheading better describing the example) with the macro right under them. See the demonstrations below:
+
+---
+
+**Example/case 1:** *One (type of) code block under one heading*
+
+With only one code block (meaning code in only one language), the EmbedLiveSample macro will work perfectly with an empty string as the first argument (otherwise it can be problematic when rendering). Taking the Spanish locale as an example, both of the code snippets below have only one HTML code block — one with a large heading (`h2`), and the second with both a heading and subheading (`h2` follwed by an `h3`) — will output the same live sample result.
+
+<details>
+<summary>Collapse/show the case 1 example:</summary>
+
+<img width="500" alt="An h2 heading with an HTML code block and EmbedLiveSample" src="assets/embedlivesample/onecodeblock/onecb-sample.png">
+
+<img width="500" alt="An h2 heading, followed by an h3 heading and an HTML code block, then the EmbedLiveSample" src="assets/embedlivesample/onecodeblock/onecb-subheading.png">
+
+Both will produce this (which is correct/what's expected):
+
+<img width="650" alt="One code block EmbedLiveSample example result" src="assets/embedlivesample/onecodeblock/onecb-live.png">
+</details>
+
+---
+
+**Example/case 2:** *Multiple (types of) code blocks under one heading*
+
+Sometimes, pages will have multiple code blocks, since a sample involves multiple programming or markup languages. The most common combinations involve HTML, CSS and JavaScript. However, one must note that these example code blocks can be organized in various ways — sometimes, they're each under their own subheading (see [example 3](#example-case-3-multiple-types-of-code-blocks-under-separate-headings)), while they can **all be placed under one heading/subheading**. This example demonstrates the second of these cases, where the EmbedLiveSample macro will handle an empty string first argument well.
+
+<details>
+<summary>Here's a test of grouping several code blocks under one heading, with the <code>{{EmbedLiveSample}}</code> immediately following them, done in the `es` (Spanish) locale:</summary>
+
+<img width="600" alt="Three code blocks grouped under one h2 heading" src="assets/embedlivesample/multiplecodeblocks/mcb-oneheading.png">
+
+<img width="700" alt="Multiple code blocks under an h2 example result" src="assets/embedlivesample/multiplecodeblocks/mcb-oneheading-live.png">
+</details>
+
+---
+
+**Example/case 3:** *Multiple (types of) code blocks under separate headings*
+
+Similar to case 2, pages may have **multiple code blocks that are each under their own subheadings**. This tends to be more common in MDN Web Docs, especially in newer and (somewhat/recently) updated pages. In this case, more care needs to be taken, as the EmbedLiveSample macro **cannot** immediately come after the final code block as it did in [example 2](#example-case-2-multiple-types-of-code-blocks-under-one-heading) — **instead, the `{{EmbedLiveSample}}` *must* be placed under its own (sub)heading!** The subheading often used when multiple code blocks are organized this way (as in they're each under their own heading/subheading) is "Result" *(also "Résultat" in French, "Resultado" in Spanish, "Резултат" in Russian and so on)*.
+
+<details>
+<summary>First off, here's is a <strong>bad</strong> example (do <strong>not</strong> try to include an <code>{{EmbedLiveSample}}</code> like this!):</summary>
+
+<img width="600" alt="Bad usage of EmbedLiveSample, which isn't under its own heading, with multiple code blocks each under a separate heading" src="assets/embedlivesample/multiplecodeblocks/mcb-headings-bad.png">
+
+The above code would result in a blank ("incorrect") live sample:
+
+<img width="700" alt="Result of bad EmbedLiveSample usage with multiple headings" src="assets/embedlivesample/multiplecodeblocks/mcb-headings-bad-live.png">
+</details>
+
+<details>
+<summary>Instead, do the following by <strong>placing the EmbedLiveSample macro under its own heading</strong>:</summary>
+
+<img width="600" alt="Good usage of EmbedLiveSample, which is under its own Result heading, with multiple code blocks each under a separate heading" src="assets/embedlivesample/multiplecodeblocks/mcb-headings-good.png">
+
+With the `{{EmbedLiveSample}}` under its own "Resultado" (Spanish for "Result") heading, the live sample will render properly/as expected:
+
+<img width="700" alt="Result of good EmbedLiveSample usage with multiple headings" src="assets/embedlivesample/multiplecodeblocks/mcb-headings-good-live.png">
+</details>
