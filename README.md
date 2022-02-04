@@ -6,6 +6,23 @@ When it comes to differences in content between the English page and its transla
 
 *Note: This guide was **not** created by any member of MDN. It contains observations and tips gathered by myself from various PRs and read-throughs of mdn/translated-content's French documentation. If reviewers suggest, request or push changes, it's a good idea to keep those in mind for future contributions to avoid repeating the same mistakes.*
 
+## Table of contents
+
+- [Links: Good places to start](#links-good-places-to-start)
+- [Types of contributions](#types-of-contributions)
+- [Similarities: en-US and locales](#similarities-en-us-and-locales)
+- [Key localization differences](#key-localization-differences)
+  - [Cards](#cards)
+  - [Images](#images)
+  - [Links](#links)
+    - [Relative links](#relative-links)
+    - [External links](#external-links)
+  - [Using macros](#using-macros)
+    - [Vocabulary macros](#vocabulary-macros)
+    - [Live and interactive code samples](#live-and-interactive-code-samples)
+    - [The EmbedLiveSample macro](#the-embed-live-sample-macro)
+- [HTML-Markdown conversion](#html-markdown-conversion) (coming soon!)
+
 ## Links: Good places to start
 
 Links to important GitHub repos and shortcuts to key documents/webpages:
@@ -35,7 +52,7 @@ Maintaining translated versions of MDN Web Docs can be quite difficult — the E
 - Creating issues to notify teams and contributors of problems found on translated pages ***(please be as clear and as detailed as possible in your issue titles and descriptions)***
 - Translating a document from English into another language ***(refer to the list of [active locales](https://github.com/mdn/translated-content#locales))***
 
-## Similarities: en-US and translations
+## Similarities: en-US and locales
 
 Here is a quick list of what's kept the same or what's similar between `content` and `translated-content`, including small additions for files in the latter repo:
 
@@ -266,3 +283,8 @@ With the `{{EmbedLiveSample}}` under its own "Resultado" (Spanish for "Result") 
 
 <img width="700" alt="Result of good EmbedLiveSample usage with multiple headings" src="assets/embedlivesample/multiplecodeblocks/mcb-headings-good-live.png">
 </details>
+
+---
+---
+
+## HTML-Markdown conversion
