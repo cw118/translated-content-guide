@@ -23,7 +23,10 @@ When it comes to differences in content between the English page and its transla
     - [Vocabulary macros](#vocabulary-macros)
     - [Live and interactive code samples](#live-and-interactive-code-samples)
     - [The EmbedLiveSample macro](#the-embedlivesample-macro)
-- [HTML-Markdown conversion](#html-markdown-conversion) (coming soon!)
+- [HTML-Markdown conversion](#html-markdown-conversion)
+  - [The conversion process](#the-conversion-process)
+  - [Conversion preparation: what to look out for in HTML](#conversion-preparation-what-to-look-out-for-in-html)
+  - [Common conversion-provoked Markdown errors](#common-conversion-provoked-markdown-errors)
 
 ---
 
@@ -321,3 +324,57 @@ With the `{{EmbedLiveSample}}` under its own "Resultado" (Spanish for "Result") 
 ---
 
 ## HTML-Markdown conversion
+
+On the en-US (mdn/content) side, all files have been converted to Markdown with the exception of the Tools section, as there was a consensus to keep the latter in HTML (that is, to **not** convert it). As for locales (mdn/translated-content), HTML to Markdown conversion (`h2m`) is either in-progress or completed (thus far, only the French locale has been fully converted to Markdown).
+
+---
+
+### The conversion process
+
+Long-time contributor, reviewer, and French locale maintainer **SphinxKnight** has created an [extensive guide to converting translated-content to Markdown](https://github.com/mdn/translated-content/discussions/2474). Definitely give it a read, especially if you plan on converting entire sections at once.
+
+Here's an extremely basic and brief overview of what you need for the conversion process.
+
+What you need:
+
+- A local copy/fork of the [mdn/yari repo](https://github.com/mdn/yari), where the `h2m` conversion tool can be found
+- A local copy/fork of the [mdn/translated-content repo (and any prerequisites needed to work on it)](https://github.com/mdn/translated-content)
+
+Basic overview of the conversion process:
+
+- Prepare the HTML content for conversion: ensure it results in a "clean" build and a "clean" report from the conversion tool
+- Review the preparation PRs (it's recommended to sample at least 10-20 files for especially large PRs, such as those modifying over 100 files) and merging, **provided all CI checks pass**
+- Convert from HTML to Markdown in two commits (do **not** squash these commits!):
+  - The first commit should rename the file(s) from `*.html` to `*.md` (change the file extension from HTML to Markdown)
+  - The second commit should convert HTML code to Markdown
+  - ***IMPORTANT: do NOT squash the renaming and conversion commits!***
+  - **Watch out for conflicts with other commits/PRs/issues — these should be "frozen"** (see SphinxKnight's guide for more information)
+
+---
+
+### Conversion preparation: what to look out for in HTML
+
+A number of code style or formatting choices that display/render without a problem in HTML will become erroneous after conversion to Markdown. Many of these errors can be avoided by using a Markdown linter (I currently use the [`vscode-markdownlint` extension](https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint)).
+
+Here are some things to look out for when modifying/reviewing HTML files *(the slashes `/` are just separators and delimiters, please ignore them)*. **Note that while some Markdown errors occasionally display properly, examples in the "To AVOID" column are *bad practices* and should *not* be used in order to prevent unexpected rendering/formatting:**
+
+| Description | TODO (HTML) | Markdown equivalent | To AVOID (HTML) | Erroneous Markdown equivalent |
+| ----------- | ----------- | ------------------- | --------------- | ----------------------------- |
+| ***No*** whitespace between HTML emphasis tags and the text nested within them | / `<strong>Some text</strong>` / `<em>Some text</em>` / | / **Some text** / *Some text* / | / `<strong> Some text</strong>` / `<em>Some text </em>` / | / ** Some text** / *Some text * / |
+| ***No*** whitespace between `<code>` tags and the text nested within them | `<code>HTTP 404</code> is` | `HTTP 404` is | `<code>HTTP 404 </code>is` | `HTTP 404 `is |
+| ***No*** whitespace between `<a>` tags and the text nested within them *(this one is less problematic, but should still be avoided)* | `See <a href="#">here</a>` | See [here](#conversion-preparation-what-to-look-out-for-in-html) | `See<a href="#"> here</a>` | See[ here](#conversion-preparation-what-to-look-out-for-in-html) |
+
+---
+
+### Common conversion-provoked Markdown errors
+
+The `h2m` conversion tool isn't perfect, so some HTML may be incorrectly converted, resulting in slightly strange-looking pages. For the most part, there's no shortcut to just "find all and replace all" — you'll have to check some manually to correct the formatting to what was intended, rather than just removing the problematic Markdown; also note that some perceived errors may have been intentional and should not be "accidentally" modified (e.g. sometimes characters are purposely escaped, and not the result of a mistaken conversion). Sometimes, errors are caused by missed typos in the HTML file — `h2m` conversion may not only carry over the typo, but also result in incorrect formatting due to missing whitespace and more.
+
+Here are some common ones to look out/search for and correct *(slashes `/` are just delimiters)*:
+
+| Description | Notes | Example(s) of erroneous Markdown | Regex/text search rule |
+| ----------- | ----- | -------------------------------- | ---------------------- |
+| Missing (white)space | This may occur with various [card keywords](#cards) and in different locales | **Note :**Pour plus... | `Note :\*\*[^ ]` |
+| Single escaped asterisks | Watch out for **intentionally escaped asterisks** (e.g. 8 \* 8 for multiplication, \*See more here, etc.)! Often occurs due to nested emphasis tags. | / **\*u**nordered **l**ist\* / **OK\***.\* / | `\*` |
+| Double escaped asterisks | The intended formatting can be tricky to determine with these. Often occurs due to nested emphasis tags. | / **\*Note**:\* / \*(Couleur)**\* ** / | `\*\*` |
+| Missing `code` formatting | Typically occurs with HTML tags, which are simply escaped rather than formatted as `code` | `\<a>` (renders as \<a>) | `\\<(\S*?)[^>]*>` |
