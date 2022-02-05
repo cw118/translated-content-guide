@@ -225,7 +225,7 @@ The `{{EmbedLiveSample}}` macro has lots of particularities (peculiarities) pert
 
 `{{EmbedLiveSample}}` must always take at least one argument — the first or only argument in the English files is the section anchor/heading, but **this sometimes causes rendering errors for translated-content, so on the translated-content side, we tend to leave an empty string as the argument instead** (e.g. `{{EmbedLiveSample("")}}` or `{{EmbedLiveSample('')}}`). The remaining arguments, typically width and height, should be kept the same as en-US.
 
-Something to keep in mind is that Yari's flaw checker may complain about "translation differences in important macros" due to different first arguments for `{{EmbedLiveSample}}`s — knonw that **these can be safely/fully ignored**!
+Something to keep in mind is that Yari's flaw checker may complain about "translation differences in important macros" due to different first arguments for `{{EmbedLiveSample}}`s — know that **these can be safely/fully ignored**!
 
 However, there are some exceptions/special cases to watch out for when using this macro. The "empty string first argument" strategy only works if the `{{EmbedLiveSample}}` macro is placed under its own heading (usually a "Result" heading), or if all code blocks are placed under a single heading (usually "Example" or a subheading better describing the example) with the macro right under them. See the demonstrations below:
 
