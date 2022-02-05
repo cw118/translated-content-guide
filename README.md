@@ -333,14 +333,16 @@ On the en-US (mdn/content) side, all files have been converted to Markdown with 
 
 Long-time contributor, reviewer, and French locale maintainer **SphinxKnight** has created an [extensive guide to converting translated-content to Markdown](https://github.com/mdn/translated-content/discussions/2474). Definitely give it a read, especially if you plan on converting entire sections at once.
 
-Here's an extremely basic and brief overview of what you need for the conversion process.
+There are two approaches for HTML-Markdown conversion. One is to convert entire sections at once; the other is to convert one/a few documents at a time while updating them vs. their en-US counterparts (this would fix outdated content and convert the file or files).
 
-What you need:
+Here's an extremely basic and brief overview of the HTML to Markdown conversion process.
+
+What you'll need (see the individual repos for setup instructions):
 
 - A local copy/fork of the [mdn/yari repo](https://github.com/mdn/yari), where the `h2m` conversion tool can be found
 - A local copy/fork of the [mdn/translated-content repo (and any prerequisites needed to work on it)](https://github.com/mdn/translated-content)
 
-Basic overview of the conversion process:
+A **basic** overview of the conversion process (please see [the guide](https://github.com/mdn/translated-content/discussions/2474) for complete and detailed instructions):
 
 - Prepare the HTML content for conversion: ensure it results in a "clean" build and a "clean" report from the conversion tool
 - Review the preparation PRs (it's recommended to sample at least 10-20 files for especially large PRs, such as those modifying over 100 files) and merging, **provided all CI checks pass**
@@ -348,7 +350,7 @@ Basic overview of the conversion process:
   - The first commit should rename the file(s) from `*.html` to `*.md` (change the file extension from HTML to Markdown)
   - The second commit should convert HTML code to Markdown
   - ***IMPORTANT: do NOT squash the renaming and conversion commits!***
-  - **Watch out for conflicts with other commits/PRs/issues — these should be "frozen"** (see SphinxKnight's guide for more information)
+  - **Watch out for conflicts with other commits/PRs/issues — these should be "frozen"** ([see SphinxKnight's guide for more information](https://github.com/mdn/translated-content/discussions/2474))
 
 ---
 
