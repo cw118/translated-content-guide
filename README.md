@@ -58,7 +58,7 @@ Maintaining translated versions of MDN Web Docs can be quite difficult — the E
 Here is a quick list of what's kept the same or what's similar between `content` and `translated-content`, including small additions for files in the latter repo:
 
 - **Newline at end of file:** at the end of every file in MDN Web Docs, whether it's en-US or any locale, should have a newline. This is considered an **MDN standard** (please also read the note directly below).
-  - **Note: it's important to realize that when viewing a file on the regular GitHub UI (without expressly clicking to edit the file or viewing file changes in a PR/commit), this final newline is *not* shown.**
+  - **Note: it's important to realize that when viewing a file on the regular GitHub UI (without expressly clicking to edit the file), this final newline is *not* shown. This often occurs even when viewing files in a commit or PR, so it's quite likely that a newline was left at the end as "required", but that it's simply not displayed/visible.**
 - **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
 - **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`. *Note: it seems that this declaration is no longer necessary/used, but this has yet to be confirmed.*
