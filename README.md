@@ -20,7 +20,7 @@ When it comes to differences in content between the English page and its transla
   - [Using macros](#using-macros)
     - [Vocabulary macros](#vocabulary-macros)
     - [Live and interactive code samples](#live-and-interactive-code-samples)
-    - [The EmbedLiveSample macro](#the-embed-live-sample-macro)
+    - [The EmbedLiveSample macro](#the-embedlivesample-macro)
 - [HTML-Markdown conversion](#html-markdown-conversion) (coming soon!)
 
 ## Links: Good places to start
@@ -34,6 +34,7 @@ Links to important GitHub repos and shortcuts to key documents/webpages:
 - GitHub repo containing the content behind MDN Web Docs (en-US original version): [mdn/content](https://github.com/mdn/content)
 - The content repo README, which has information on fundamental concepts, PR etiquette and common actions: [README.md in mdn/content](https://github.com/mdn/content/blob/main/README.md)
 - MDN's how-to guides: [Contributing to MDN, how-tos](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Howto)
+- MDN's style guides: [Code example guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines)
 - What's Deployed for translated-content (see if your merged PR has been deployed to the site): [translated-content — What's Deployed](https://whatsdeployed.io/s/16d/mdn/translated-content)
 
 ## Types of contributions
@@ -43,7 +44,7 @@ Maintaining translated versions of MDN Web Docs can be quite difficult — the E
 - Typo and formatting fixes
 - Fixing links (dead, unneeded external, https, etc.)
 - Fixing issues with images (not displaying, wrong source, etc.)
-- Fixing issues with macros *(more detail on this in [Using macros](#using_macros))*
+- Fixing issues with macros *(more detail on this in [Using macros](#using-macros))*
   - Fixing issues with live code examples
 - Translating sections mistakenly left in English (fixing/correcting missed translations)
 - Updating/synchronizing translated docs with the en-US versions
@@ -86,7 +87,7 @@ Below is a non-extensive list of important differences between `translated-conte
 - **Cards in l10n:** see the [Cards](#cards) section for details on using cards (in English, these are `Note:`, `Callout:` and `Warning:`).
 - **Images:** see the [Images](#images) section.
 - **Links:** see the [Links](#links) section.
-- **Macros:** see the [Using macros](#using_macros) section for details on vocabulary/xref macros (`htmlelement`, `cssxref`, etc.) and embed macros (`EmbedLiveSample`, `EmbedInteractiveSample`, etc.).
+- **Macros:** see the [Using macros](#using-macros) section for details on vocabulary/xref macros (`htmlelement`, `cssxref`, etc.) and embed macros (`EmbedLiveSample`, `EmbedInteractiveSample`, etc.).
 
 ---
 ---
