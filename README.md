@@ -86,15 +86,16 @@ Here is a quick list of what's kept the same or what's similar between `content`
 
 ### Front matter and macros
 
-- **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
+Note that in HTML files (those not yet converted to Markdown, or those in the Tools folder, for which there was a consensus to leave in HTML), macros are typically wrapped in `<div>` or `<p>` tags.
+
+- **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions and objects, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
-- **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`. *Note: it seems that this declaration is no longer necessary/used, but this has yet to be confirmed.*
 - **Formal definition:** the `{{CSSinfo}}` macro *(also seen as `{{cssinfo}}`, though case doesn't necessarily matter)* is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Formal syntax:** the `{{csssyntax}}` macro is used universally; however, the placement of the `Formal syntax` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts. For HTML files, specifications macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language. For HTML files, compatibility table macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
   - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
-- **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts. For HTML files, sidebar macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
+- **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts.
 - **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 - **Various compatibility and deprecation warnings:** macros like `{{SeeCompatTable}}` (notifies users that a technology is experimental), `{{optional_inline}}` (inline symbol that lets users know that something, often a function argument or CSS rule parameter, is optional), and `{{Deprecated_Inline}}` (inline icon that lets user know something has been deprecated), etc. should match their usage in en-US files. In other words, there shouldn't be a `{{SeeCompatTable}}` warning in a Chinese file if it's not in its English counterpart, and if the English version has a `{{Deprecated_Header}}` (similar to its inline version, but it's displayed as a card-style warning), the Chinese (or any locale/translated) counterpart should have it as well.
 
@@ -104,7 +105,10 @@ Below is a non-extensive list of important differences between `translated-conte
 
 - **Tags:** the translated docs do **not** use tags (teams and contributors are still in the process of removing them) — found at the top of en-US files and possibly translated files where they haven't yet been deleted.
   - Removing tags doesn't seem to be a priority, so no need to make a PR removing tags from all files — if you're editing a page in the translated-content repo that happens to have tags, please do remove them.
+- **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` should usually be the same as `slug` *(see [Similarities — Front matter and macros](#front-matter-and-macros))*.
+- **original_slug:** the original slug, with English words translated to the locale language (e.g. the `original_slug` for `Learn/Server-side/Django/Generic_views` in French is `Learn/Server-side/Django/Vues_generiques`). Unique to the`translated-content` repo. *Note that this declaration is not required if it (the "original `slug`") is identical to the actual slug. Often not included/needed.*
 - **No-breaking spaces (mostly French-specific):** when using punctuation that requires spaces before and/or after alphabetic characters like guillemets (`«»`), colons (`:`), semi-colons (`;`), question and exclamation marks (`?` and `!`), use no-breaking spaces (HTML entity `&nbsp;`).
+  - ***Important:*** do **not** use no-breaking spaces in cards, otherwise they won't be rendered correctly! *(For example, write `**Attention :**` and **not** `**Attention&nbsp;:**`!)*
   - A seemingly good rule of thumb for this is that when you're in doubt of whether a non-breaking space is "required", use one.
   - For example, note the presence of a non-breaking space in the following sentence: `Travailler avec des formulaires peut s'avérer compliqué&nbsp;!` (*renders as:* Travailler avec des formulaires peut s'avérer compliqué&nbsp;!).
   - An example with guillemets: `des «&nbsp;gouttières&nbsp;»` (*renders as:* des «&nbsp;gouttières&nbsp;»).
@@ -120,13 +124,13 @@ Below is a non-extensive list of important differences between `translated-conte
 
 ### Cards
 
-In English, the three main types of cards can be added using the keywords **Note:**, **Callout:**, and **Warning:**. The translated content also uses these cards *(they should be placed in the same file/page locations with the matching card style)*, but with translated keywords — to see the card keywords used by each locale, see their corresponding localization JSON file at [mdn/yari/markdown/localizations](https://github.com/mdn/yari/tree/main/markdown/localizations). ***All contents of such cards can and should be translated!***
+In English, the three main types of cards can be added using the bolded keywords **Note:**, **Callout:**, and **Warning:**. The translated content also uses these cards *(they should be placed in the same file/page locations with the matching card style)*, but with translated keywords — to see the card keywords used by each locale, see their corresponding localization JSON file at [mdn/yari/markdown/localizations](https://github.com/mdn/yari/tree/main/markdown/localizations) (or add keywords for your locale to that folder if they don't exist). ***All contents of such cards can and should be translated!***
 
-For example, a **Note:** card is styled as follows:
+For example, a **Note:** card is styled as follows, by writing the keyword and a colon `:` in bold:
 
 ![MDN blue note card](assets/cards/note.png)
 
-In the French locale, the keyword is the same. Depending on whether the file you're working on has an `.html` or `.md` extension, you'd type:
+Depending on whether the file you're working on has an `.html` or `.md` extension, you'd type:
 
 - `.html` (the file is still in **HTML**): Create a `<div>` and apply the `note` class to it, then wrap `<strong>` tags around the keyword. The colon after the keyword tends to be placed outside of the `<strong>` tags. See below for an example.
 
