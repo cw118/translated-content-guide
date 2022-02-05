@@ -4,13 +4,15 @@ A guide/checklist for myself (and any interested [mdn/translated-content](https:
 
 When it comes to differences in content between the English page and its translated counterparts, **always** consider the **English version** to be "correct"/up-to-date.
 
-*Note: This guide was **not** created by any member of MDN. It contains observations and tips gathered by myself from various PRs and read-throughs of mdn/translated-content's French documentation. If reviewers suggest, request or push changes, it's a good idea to keep those in mind for future contributions to avoid repeating the same mistakes.*
+***Note**: This guide was **not** created by any member of MDN. The information presented here has **not necessarily** been fully confirmed or approved by any member of MDN. It contains observations and tips gathered by myself from various PRs and read-throughs of mdn/translated-content's French documentation. If reviewers suggest, request or push changes, it's a good idea to keep those in mind for future contributions to avoid repeating the same mistakes.*
 
 ## Table of contents
 
 - [Links: Good places to start](#links-good-places-to-start)
 - [Types of contributions](#types-of-contributions)
 - [Similarities: en-US and locales](#similarities-en-us-and-locales)
+  - [Style and formatting](#style-and-formatting)
+  - [Front matter and macros](#front-matter-and-macros)
 - [Key localization differences](#key-localization-differences)
   - [Cards](#cards)
   - [Images](#images)
@@ -23,6 +25,8 @@ When it comes to differences in content between the English page and its transla
     - [The EmbedLiveSample macro](#the-embedlivesample-macro)
 - [HTML-Markdown conversion](#html-markdown-conversion) (coming soon!)
 
+---
+
 ## Links: Good places to start
 
 Links to important GitHub repos and shortcuts to key documents/webpages:
@@ -34,8 +38,12 @@ Links to important GitHub repos and shortcuts to key documents/webpages:
 - GitHub repo containing the content behind MDN Web Docs (en-US original version): [mdn/content](https://github.com/mdn/content)
 - The content repo README, which has information on fundamental concepts, PR etiquette and common actions: [README.md in mdn/content](https://github.com/mdn/content/blob/main/README.md)
 - MDN's how-to guides: [Contributing to MDN, how-tos](https://developer.mozilla.org/en-US/docs/MDN/Contribute/Howto)
+- Guidelines for MDN's locales: [General guidelines for MDN translated content](https://github.com/mdn/translated-content/tree/main/docs)
 - MDN's style guides: [Code example guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines)
 - What's Deployed for translated-content (see if your merged PR has been deployed to the site): [translated-content — What's Deployed](https://whatsdeployed.io/s/16d/mdn/translated-content)
+
+---
+---
 
 ## Types of contributions
 
@@ -53,24 +61,42 @@ Maintaining translated versions of MDN Web Docs can be quite difficult — the E
 - Creating issues to notify teams and contributors of problems found on translated pages ***(please be as clear and as detailed as possible in your issue titles and descriptions)***
 - Translating a document from English into another language ***(refer to the list of [active locales](https://github.com/mdn/translated-content#locales))***
 
+---
+---
+
 ## Similarities: en-US and locales
 
-Here is a quick list of what's kept the same or what's similar between `content` and `translated-content`, including small additions for files in the latter repo:
+Here is a quick list of what's kept the same or what's similar between `content` and `translated-content`, including small additions for files in the latter repo.
+
+---
+
+### Style and formatting
 
 - **Newline at end of file:** at the end of every file in MDN Web Docs, whether it's en-US or any locale, should have a newline. This is considered an **MDN standard** (please also read the note directly below).
   - **Note: it's important to realize that when viewing a file on the regular GitHub UI (without expressly clicking to edit the file), this final newline is *not* shown. This often occurs even when viewing files in a commit or PR, so it's quite likely that a newline was left at the end as "required", but that it's simply not displayed/visible.**
+- **Code styles and conventions:** MDN has outlined [code example guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines), which **we abide by both in mdn/content and mdn/translated-content**! For instance, when including code examples in JavaScript, all statements must end with semicolons (`;`), and single quotes (`'`) must be used. *See below for some quick links — you can refer to these for MDN Web Docs' code style standards and explanations of certain stylistic choices.*
+  - [General code guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines)
+  - [HTML guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/HTML)
+  - [CSS guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/CSS)
+  - [JavaScript guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/JavaScript)
+  - [Shell prompt guidelines](https://developer.mozilla.org/en-US/docs/MDN/Guidelines/Code_guidelines/Shell)
+- **Formatting and layout:** the translated docs should, in general, be formatted and laid out in the same way as the en-US versions — however, if you find mistakes (e.g. incorrect Markdown syntax), please correct them in the translated file(s), and feel free to submit a PR at the mdn/content repo to fix those errors at the source as well!
+
+---
+
+### Front matter and macros
+
 - **title:** the `title:` declaration is always at the very top of each file in both en-US and localized versions. Page titles can and should be translated *(with the exception of official coding terms and syntax such as HTML elements/tags, CSS properties, JavaScript functions, etc.)*.
 - **slug:** also found at the top of every file, the slug essentially specifies part of a page's link. **Note that slugs are *not* to be translated!**
 - **translation_of:** provide the slug of the en-US counterpart here. Unique to the `translated-content` repo, though `translation_of` often has the same slug as `slug`. *Note: it seems that this declaration is no longer necessary/used, but this has yet to be confirmed.*
 - **Formal definition:** the `{{CSSinfo}}` macro *(also seen as `{{cssinfo}}`, though case doesn't necessarily matter)* is used universally; however, the placement of the `Formal definition` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
-- **Formal syntax:** the `{{csssyntax}` macro is used universally; however, the placement of the `Formal syntax` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
+- **Formal syntax:** the `{{csssyntax}}` macro is used universally; however, the placement of the `Formal syntax` section/block tends to vary with each locale. Refer to other pages in the locale to which you're contributing to see where to place this. For HTML files, these macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts. For HTML files, specifications macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language. For HTML files, compatibility table macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
   - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
 - **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts. For HTML files, sidebar macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
 - **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 - **Various compatibility and deprecation warnings:** macros like `{{SeeCompatTable}}` (notifies users that a technology is experimental), `{{optional_inline}}` (inline symbol that lets users know that something, often a function argument or CSS rule parameter, is optional), and `{{Deprecated_Inline}}` (inline icon that lets user know something has been deprecated), etc. should match their usage in en-US files. In other words, there shouldn't be a `{{SeeCompatTable}}` warning in a Chinese file if it's not in its English counterpart, and if the English version has a `{{Deprecated_Header}}` (similar to its inline version, but it's displayed as a card-style warning), the Chinese (or any locale/translated) counterpart should have it as well.
-- **Formatting and layout:** the translated docs should, in general, be formatted and laid out in the same way as the en-US versions — however, if you find mistakes (e.g. incorrect Markdown syntax), please correct them in the translated file(s), and feel free to submit a PR at the mdn/content repo to fix those errors at the source as well!
 
 ## Key localization differences
 
