@@ -374,9 +374,9 @@ The `h2m` conversion tool isn't perfect, so some HTML may be incorrectly convert
 
 Here are some common ones to look out/search for and correct *(slashes `/` are just delimiters)*:
 
-| Description | Notes | Example(s) of erroneous Markdown | Regex/text search rule |
-| ----------- | ----- | -------------------------------- | ---------------------- |
-| Missing (white)space | This may occur with various [card keywords](#cards) and in different locales | **Note :**Pour plus... | `Note :\*\*[^ ]` |
-| Single escaped asterisks | Watch out for **intentionally escaped asterisks** (e.g. 8 \* 8 for multiplication, \*See more here, etc.)! Often occurs due to nested emphasis tags. | / **\*u**nordered **l**ist\* / **OK\***.\* / | `\*` |
-| Double escaped asterisks | The intended formatting can be tricky to determine with these. Often occurs due to nested emphasis tags. | / **\*Note**:\* / \*(Couleur)**\* ** / | `\*\*` |
-| Missing `code` formatting | Typically occurs with HTML tags, which are simply escaped rather than formatted as `code` | `\<a>` (renders as \<a>) | `\\<(\S*?)[^>]*>` |
+| Description | Notes | Example(s) of erroneous Markdown | Incorrectly rendered Markdown | Regex/text search rule |
+| ----------- | ----- | -------------------------------- | ----------------------------- | ---------------------- |
+| Missing (white)space | This may occur with various [card keywords](#cards) and in different locales | `**Note :**Pour plus...` | **Note :**Pour plus... | `Note :\*\*[^ ]` |
+| Single escaped asterisks | Watch out for **intentionally escaped asterisks** (e.g. 8 \* 8 for multiplication, \*see exception, etc.)! Often occurs due to nested emphasis tags. | / `**\*u**nordered **l**ist\*` / `**OK\***.\*` / | / **\*u**nordered **l**ist\* / **OK\***.\* / | `\*` |
+| Double escaped asterisks | The intended formatting can be tricky to determine with these. Often occurs due to nested emphasis tags. | / `**\*Note**:\*` / `\*(Couleur)**\* **` / | / **\*Note**:\* / \*(Couleur)**\* ** / | `\*\*` |
+| Missing `code` formatting | Typically occurs with HTML tags, which are simply escaped rather than formatted as `code` | `\<a>` | \<a> | `\\<(\S*?)[^>]*>` |
