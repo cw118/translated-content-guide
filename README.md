@@ -105,6 +105,9 @@ Note that in HTML files (those not yet converted to Markdown, or those in the To
 - **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 - **Various compatibility and deprecation warnings:** macros like `{{SeeCompatTable}}` (notifies users that a technology is experimental), `{{optional_inline}}` (inline symbol that lets users know that something, often a function argument or CSS rule parameter, is optional), and `{{Deprecated_Inline}}` (inline icon that lets user know something has been deprecated), etc. should match their usage in en-US files. In other words, there shouldn't be a `{{SeeCompatTable}}` warning in a Chinese file if it's not in its English counterpart, and if the English version has a `{{Deprecated_Header}}` (similar to its inline version, but it's displayed as a card-style warning), the Chinese (or any locale/translated) counterpart should have it as well.
 
+---
+---
+
 ## Key localization differences
 
 Below is a non-extensive list of important differences between `translated-content` and `content` document structures, based on tips from review teams and my observations. Certain "concepts", such as macros, require more in-depth explanations and are given a subsection to address their particularities.
