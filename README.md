@@ -236,7 +236,7 @@ See the [macros folder at mdn/yari](https://github.com/mdn/yari/tree/main/kumasc
 
 #### Vocabulary macros
 
-Depending on the locale, the reviewing team may continue using macros as the en-US files do, or they may prefer to replace these macros with their corresponding links. For instance, the French (fr) locale replaces all vocabulary macros and some others with links — this is because it's said that many Kumascript macros will be deleted in the future, with the exception of some such as `{{EmbedLiveSample}}`; thus, beginning to remove macros that will likely/potentially be deleted is done in preparation for when their eventual deletion.
+Depending on the locale, the reviewing team may continue using macros as the en-US files do, or they may prefer to replace these macros with their corresponding links. For instance, the French (fr) locale replaces all vocabulary macros and some others with links — this is because it's said that many Kumascript macros will be deleted in the future, with the exception of some such as `{{EmbedLiveSample}}` as explained above; thus, beginning to remove macros that will likely/potentially be deleted is done in preparation for their eventual deletion.
 
 Some examples of these, as in vocabulary and wiki macros, are *(to ensure you replace macros with the correct links, you can also preview pages locally, click on the links resulting from macros, and copy the URL)*:
 
