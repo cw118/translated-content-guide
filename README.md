@@ -236,16 +236,20 @@ See the [macros folder at mdn/yari](https://github.com/mdn/yari/tree/main/kumasc
 
 #### Vocabulary macros
 
-Depending on the locale, the reviewing team may continue using macros as the en-US files do, or they may prefer to replace these macros with their corresponding links. For instance, the French (fr) locale replaces all vocabulary macros and some others with links to prepare for their potential deletion. Some examples of these, as in vocabulary and wiki macros, are:
+Depending on the locale, the reviewing team may continue using macros as the en-US files do, or they may prefer to replace these macros with their corresponding links. For instance, the French (fr) locale replaces all vocabulary macros and some others with links — this is because it's said that many Kumascript macros will be deleted in the future, with the exception of some such as `{{EmbedLiveSample}}`; thus, beginning to remove macros that will likely/potentially be deleted is done in preparation for when their eventual deletion.
 
-- `{{HTMLElement}}`
-- `{{CSSxRef}}`
-- `{{JSxRef}}`
-- `{{Interwiki}}`
-- `{{Glossary}}`
-- `{{htmlattrxref}}`
-- `{{HTTPStatus}}`
-- `{{DOMxRef}}`
+Some examples of these, as in vocabulary and wiki macros, are *(to ensure you replace macros with the correct links, you can also preview pages locally, click on the links resulting from macros, and copy the URL)*:
+
+| Macro | Corresponding link | Example (in the *`fr`* locale) |
+| ----- | ------------------ | ------- |
+| `{{HTMLElement}}` | `/<locale>/docs/Web/HTML/Element/<element-name>` | `{{HTMLElement("select")}}` -> `/fr/docs/Web/HTML/Element/select` |
+| `{{CSSxRef}}` | `/<locale>/docs/Web/CSS/<css-rule-property-etc>` | `{{cssxref("@keyframes")}}` -> `/fr/docs/Web/CSS/@keyframes` |
+| `{{JSxRef}}` | `/<locale>/docs/Web/JavaScript/Reference/Global_Objects/<js-term>` | `{{jsxref("Promise")}}` -> `/fr/docs/Web/JavaScript/Reference/Global_Objects/Promise` |
+| `{{bug}}` | `https://bugzilla.mozilla.org/show_bug.cgi?id=<bug-id>` | `{{bug("11011"}}` -> `https://bugzilla.mozilla.org/show_bug.cgi?id=11011`|
+| `{{Interwiki("wikipedia", ...)}}` | `https://<wikipedia-locale-abbr>.wikipedia.org/wiki/<term-expression-etc>` | `{{interwiki("wikipedia", "Raccourci_clavier")}}` -> `https://fr.wikipedia.org/wiki/Raccourci_clavier` |
+| `{{Glossary}}` | `/<locale>/docs/Glossary/<term>` | `{{Glossary("IPv4")}}` -> `/fr/docs/Glossary/IPv4` |
+| `{{HTTPStatus}}` | `/<locale>/docs/Web/HTTP/Status/<http-status-code>` | `{{HTTPStatus("404")}}` -> `/fr/docs/Web/HTTP/Status/404` |
+| `{{DOMxRef}}` | `/<locale>/docs/Web/API/<DOM-term>` | `{{domxref("DOMString")}}` -> `/fr/docs/Web/API/DOMString` |
 
 ---
 
