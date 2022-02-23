@@ -89,13 +89,15 @@ Here is a quick list of what's kept the same or what's similar between `content`
 
 Code editors like VS Code have implemented features to highlight characters that are "often confused with another" and/or "invisible" (in VS Code, this is done with a yellow rectangle surrounding a character) — you can hover over each highlighted character to see its unicode hex and a potential replacement. The [Gremlins tracker for Visual Studio Code] extension ([find/install it here](https://marketplace.visualstudio.com/items?itemName=nhoizey.gremlins)) is an excellent to search for these characters as well — see after the table below for images of the VS Code and Gremlins tracker features in action. Here are some examples of "gremlins":
 
-| Character name | Unicode | Potential replacement |
+> **Note:** These "invisible" chars, or "gremlins", aren't detected or highlighted on the GitHub UI, so you'll have to check for some by reviewing locally. Don't worry too much about gremlins, though it won't hurt to nitpick a little with typography.
+
+| Character name | Unicode hex | Can potentially be replaced by... |
 | -------------- | ------- | --------------------- |
-| Non-breaking space | `U+00a0` | Regular space (note that non-breaking spaces are [sometimes intentional](#key-localization-differences)) |
-| EN dash (meant for use with number ranges, e.g. "2–3") | `U+2013` | Regular dash |
+| Non-breaking space | `U+00a0` | Regular space — if you see any that are "randomly placed" in a file, feel free to replace them as they're probably not meant to be there. (**Note:** Non-breaking spaces are [sometimes intentional](#key-localization-differences)) |
+| EN dash (slightly longer than a dash, meant for use with number ranges, e.g. "2–3") | `U+2013` | Regular dash (e.g. "2-3") |
 | Typographer's apostrophe/quotation marks (also called "smart apostrophe"/"smart quotes"): ‘’ and “” | `U+2018`, `U+2019`, `U+201c`, `U+201d` | Regular apostrophes/quotation marks ('' and "") |
 | Chinese punctuation (，, ；, （ and ）, etc.) | `U+ff0c`, `U+ff1b`, `U+ff08` and `U+ff09`... | None — these are intentional, but are identified as gremlins because their spacing is different from common keyboard layouts (QWERTY, AZERTY, etc.). |
-| Various cyrillic letters (с, а, е, б, о, р, г, etc.) | `U+0441`, `U+0430`, `U+0435`, `U+0431`, `U+043e`, `U+0440`, `U+0433`... | None — these are intentional (simply used in other languages such as Russian) |
+| Various cyrillic letters (с, а, е, б, о, р, г, etc.) | `U+0441`, `U+0430`, `U+0435`, `U+0431`, `U+043e`, `U+0440`, `U+0433`... | None — these are intentional (while they closely resemble Latin characters like English letters, cyrillic characters are not the same and are used in other languages such as Russian) |
 
 <details>
 <summary>VS Code's character highlighting feature in a `translated-content` Russian file:</summary>
