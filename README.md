@@ -1,6 +1,6 @@
 # Guide to localization particularities: mdn/translated-content
 
-A guide/checklist for myself (and any interested [mdn/translated-content](https://github.com/mdn/translated-content) contributors) for localization differences in MDN Web Docs' translated content. Primarily created based on/for the [l10n-fr (French) locale](https://github.com/mdn/translated-content/tree/main/files/fr).
+A guide/checklist for myself (and any interested [mdn/translated-content](https://github.com/mdn/translated-content) reviewers and contributors) for localization differences in MDN Web Docs' translated content. Primarily created based on/for the [l10n-fr (French) locale](https://github.com/mdn/translated-content/tree/main/files/fr).
 
 When it comes to differences in content between the English page and its translated counterparts, **always** consider the **English version** to be "correct"/up-to-date. As such, when updating a localized page *("update vs. en-US")*, you should **refer to the English counterpart and its corresponding file on GitHub** to ensure the translated version matches en-US (page slugs and file paths are the same except for the locale abbreviation, e.g. **`files/en-us/learn/forms/`** in `mdn/content` has a French counterpart **`files/fr/learn/forms/`** in `mdn/translated-content`).
 
@@ -110,6 +110,7 @@ Code editors like VS Code have implemented features to highlight characters that
 
 ![Gremlins tracker extension highlighting gremlin punctuation](assets/unicode-highlight/gremlins-tracker.png)
 </details>
+
 ---
 
 ### Front matter and macros
@@ -123,11 +124,11 @@ Note that in HTML files (those not yet converted to Markdown, or those in the To
 - **Formal syntax:** the various syntax macros, such as `{{csssyntax}}`, are used universally; however, the placement of the `Formal syntax` section/block tends to vary with each locale. It's generally recommended to place `Formal syntax` below `Formal definition`, but some locales don't follow this structure — refer to other pages in the locale to which you're contributing to see where to place this, or politely ask the reviewing team.
   - Formal syntax and other data for CSS can be found in [this folder of the mdn/data repo](https://github.com/mdn/data/tree/main/css)
   - Inheritance data for APIs can be found in the [api folder at mdn/data](https://github.com/mdn/data/tree/main/api)
-- **Specifications:** specs in `translated-content` are and should be translated from en-US counterparts.
+- **Specifications:** translated pages use the same `{{Specifications}}` macro as the en-US pages. For the few that are still formatted as specs tables, those in `translated-content` are/should be translated from en-US counterparts.
 - **Compatibility tables:** translated pages use the same compatibility tables (or macro, depending on the page) as their en-US counterparts, though the content of these tables are translated to the corresponding language. For HTML files, compatibility table macros are typically wrapped in `<div>` (sometimes `<p>`) tags.
-  - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is placed below `translation_of` in `translated-content` files.
+  - **browser-compat:** only necessary for pages with compatibility tables where the `{{Compat}}` macro takes no arguments — the same `browser-compat` value is used in en-US and localized versions. This declaration is usually placed below (sometimes above) `translation_of` in `translated-content` files.
 - **Sidebars:** translated pages use the same sidebar macros as their en-US counterparts.
-- **Menus/Navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
+- **Menus/navigation:** menu macros such as `{{NextMenu}}` and `{{PreviousMenuNext}}` should take the same arguments as their en-US counterparts.
 - **Various compatibility and deprecation warnings:** macros like `{{SeeCompatTable}}` (notifies users that a technology is experimental), `{{optional_inline}}` (inline symbol that lets users know that something, often a function argument or CSS rule parameter, is optional), and `{{Deprecated_Inline}}` (inline icon that lets user know something has been deprecated), etc. should match their usage in en-US files. In other words, there shouldn't be a `{{SeeCompatTable}}` warning in a Chinese file if it's not in its English counterpart, and if the English version has a `{{Deprecated_Header}}` (similar to its inline version, but it's displayed as a card-style warning), the Chinese (or any locale/translated) counterpart should have it as well.
 
 ---
