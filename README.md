@@ -1,10 +1,10 @@
 # Guide to localization particularities: mdn/translated-content
 
-A guide/checklist for myself (and any interested [mdn/translated-content](https://github.com/mdn/translated-content) reviewers and contributors) for localization differences in MDN Web Docs' translated content. Primarily created based on/for the [l10n-fr (French) locale](https://github.com/mdn/translated-content/tree/main/files/fr).
+A guide/checklist for myself (and any interested [mdn/translated-content](https://github.com/mdn/translated-content) reviewers and contributors) for localization differences in MDN Web Docs' translated content. **Primarily created based on/for the [l10n-fr (French) locale](https://github.com/mdn/translated-content/tree/main/files/fr).**
 
 When it comes to differences in content between the English page and its translated counterparts, **always** consider the **English version** to be "correct"/up-to-date. As such, when updating a localized page *("update vs. en-US")*, you should **refer to the English counterpart and its corresponding file on GitHub** to ensure the translated version matches en-US (page slugs and file paths are the same except for the locale abbreviation, e.g. **`files/en-us/learn/forms/`** in `mdn/content` has a French counterpart **`files/fr/learn/forms/`** in `mdn/translated-content`).
 
-***Note**: This guide was **not** created by any member of MDN. The information presented here has **not necessarily** been fully confirmed or approved by any member of MDN. It contains observations and tips gathered by myself from various PRs and read-throughs of mdn/translated-content's French documentation. If reviewers suggest, request or push changes, it's a good idea to keep those in mind for future contributions to avoid repeating the same mistakes.*
+***Note**: Guidelines may be slightly different for each locale. If reviewers suggest, request or push changes, it's a good idea to keep those in mind for future contributions to avoid repeating the same mistakes :)*
 
 ## Table of contents
 
